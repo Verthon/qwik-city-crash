@@ -1,0 +1,56 @@
+---
+# File: src/routes/blog/qwik-basics/index.mdx
+title: Qwik City Basics
+---
+
+## Basics
+
+The Core principle “**Delay execution of JavaScript as much as possible.**”
+
+Qwik is all about 2 terms
+
+- **Resumable** (no JS, and no hydration)
+- **Progressive**
+
+## Resumability by example in Qwik
+
+1. run the application at the server
+2. serializing it’s state into HTML
+3. send the HTML over to the client
+4. client is ready to go
+5. the additional JS is ONLY loaded on demand (on interactivity) when it is have to be loaded for certain action - it is called [precision lazy-loading](https://qwik.builder.io/docs/concepts/progressive/) (progressive)
+
+### Example by analogy
+
+You can think of it (resumable framework) as virtual machine
+
+1. You start a virtual machine - Linux for instance
+2. there is a bootup process when you have to wait for login screen and then login
+3. you open the some program and do your work there
+4. once you are done you save the VM
+5. what happens under the hood is that VM creates a file with this state
+6. then you to send it to your colleague
+7. your colleague opens it on totally different physical machine
+8. and he gets the exact same state, that you left on your machine
+9. he won’t go through the bootup process - he can interact with program imediately
+10. hydration is exactly the same, it is the bootup process
+
+### Example by comparison
+
+Hydration = replay the app
+
+It just runs twice:
+
+1. execute all logic in the server
+2. serialization process on the server
+3. on the client it downloads all non-lazy loaded JS
+4. application needs to be re-executed - since framework need to figure out component boundaries, where are the listeners, what is the DOM structure and so on
+5. reconciliation process, when framework need to determine what changed and when to put the listeners
+6. Now the page is interactive
+
+On the other hand resumable frameworks
+
+1. execute all logic in the server
+2. serialization process on the server
+3. prefetch on service workers
+4. Now the page is interactive

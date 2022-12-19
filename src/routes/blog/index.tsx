@@ -5,22 +5,25 @@ import { Link } from '@builder.io/qwik-city';
 export default component$(() => {
   return (
     <div>
-      <h1>
-        Welcome to Qwik <span class="lightning">⚡️</span>
-      </h1>
-      <Link href="/blog/">
-        go to blog
+      <h1>Blog</h1>
+      <Link href="/">
+        back to home
+      </Link>
+
+      <h2>Articles</h2>
+      <Link href="/blog/qwik-basics">
+        go to qwik basics
       </Link>
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik',
+  title: 'Blog',
   meta: [
     {
       name: 'description',
-      content: 'Qwik site description',
+      content: 'Blog sub page',
     },
   ],
 };
